@@ -2,7 +2,7 @@
 layout: single
 title: "How a BIOS Fix Ended My Chrome Crashes and System-Wide Instability (Intel 13th/14th Gen)"
 header:
-  teaser: /assets/images/intel-chip-icon.png
+  teaser: /assets/images/bitflip.jpeg
 ---
 
 
