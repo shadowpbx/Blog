@@ -1,0 +1,10 @@
+/* Override the theme's default large text */
+html {
+  font-size: 14px !important; 
+}
+
+/* Ensure code blocks stay crisp and readable */
+div.highlighter-rouge, 
+figure.highlight {
+  font-size: 0.85em !important;
+}
