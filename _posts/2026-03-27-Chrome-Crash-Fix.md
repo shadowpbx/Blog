@@ -19,7 +19,7 @@ After 48 hours of deep-level debugging, I found that the only permanent way to s
 
 If you are facing these same problems, applying these hard limits will stop your crashes immediately.
 
----
+***
 
 ## ⚠️ The Problem: The "Unfixable" Browser Crash
 If you are running a high-end Intel 13th or 14th Gen processor (like the **i7-13700K** or **i9-14900K**) on Linux, you have likely encountered a maddening cycle of application failures:
@@ -43,7 +43,7 @@ After 48 hours of deep-level debugging, I found that the only permanent way to s
 
 **If you are facing these same problems, this BIOS fix will stop your crashes immediately.**
 
----
+***
 
 ## 🔍 The Deep Dive: Why Your High-End PC is Stumbling
 
@@ -68,7 +68,7 @@ While the BIOS fix stabilizes the electricity, the software architecture matters
 
 *   Wayland uses **DMA-BUF (Direct Memory Access)**, which allows Chrome to pass data directly to the GPU without the CPU having to "double-handle" the memory. This stops the "Shared Memory" bridge failures (Descriptor 7 errors) that cause X11 to hang.
 
----
+***
 
 ## 🛠️ Step-by-Step Implementation Guide
 
