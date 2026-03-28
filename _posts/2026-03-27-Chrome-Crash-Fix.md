@@ -1,6 +1,27 @@
 ---
-layout: post
+layout: single
 title: "How a BIOS Fix Ended My Chrome Crashes and System-Wide Instability (Intel 13th/14th Gen)"
+---
+
+# Stopping the Raptor: How a BIOS Fix Ended My Chrome Crashes and System-Wide Instability (Intel 13th/14th Gen)
+
+---
+
+> **The Short Version:** If you are running a high-end Intel processor (like the **i7-13700K**) on Linux with a massive **128GB RAM** configuration, you have likely encountered application failures. This is not a driver issue; it is a hardware-level power management failure.
+
+## 🛠️ The "Magic" Stability Blueprint
+
+After 48 hours of deep-level debugging, I found that the only permanent way to stop these crashes is to override your motherboard's "Auto" settings and manually stabilize the CPU's power delivery.
+
+| System / BIOS Setting | Target Value | Why It Prevents Crashes |
+| :--- | :--- | :--- |
+| **Display Server** (NVIDIA) | `Wayland` | Handles shared memory better than X11; stops Chrome "Sandbox" hangs. |
+| **Intel C-States** | `Disabled` | Stops violent voltage "surges" that occur when the CPU wakes up from idle/sleep. |
+| **Power Limits (PL1/PL2)** | `253W` | Caps the maximum wattage. Do not leave this on motherboard "Unlimited" defaults. |
+| **Current Limit (ICCMax)** | `200A` or `307A` | Prevents extreme electrical spikes that cause the CPU to make math errors. |
+
+If you are facing these same problems, applying these hard limits will stop your crashes immediately.
+
 ---
 
 ## ⚠️ The Problem: The "Unfixable" Browser Crash
@@ -12,6 +33,7 @@ If you are running a high-end Intel 13th or 14th Gen processor (like the **i7-13
 *   **Application Collapse:** Heavy tasks like FFmpeg conversions or Virtual Machines (Debian/KVM) crash without warning.
 
 **Most guides will tell you to reinstall your drivers or check your RAM. They are wrong. This is a hardware-level power management failure.**
+
 
 ## ✅ The Fix: Taming the CPU in the BIOS
 After 48 hours of deep-level debugging, I found that the only permanent way to stop these crashes is to override your motherboard's "Auto" settings and manually stabilize the CPU's power delivery.
