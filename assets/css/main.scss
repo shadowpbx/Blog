@@ -39,3 +39,13 @@
 .site-title {
   font-size: 1rem !important;
 }
+
+/* Force the horizontal line to be visible */
+hr {
+  display: block;
+  height: 2px !important;
+  border: 0;
+  border-top: 2px solid #333 !important; /* This makes it a dark gray/black */
+  margin: 2em 0 !important;
+  padding: 0;
+}
