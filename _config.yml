@@ -1,0 +1,14 @@
+# Site settings
+title: My Tech Blog
+description: Troubleshooting and IT fixes.
+baseurl: "" # leave empty for your main blog
+url: "" # your github pages URL
+
+# Build settings
+theme: minima
+future: true      # This is critical for today's post!
+timezone: America/New_York
+
+# Plugins
+plugins:
+  - jekyll-feed
