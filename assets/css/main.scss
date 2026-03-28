@@ -43,10 +43,29 @@
     font-family: "Courier New", Courier, monospace !important;
     font-weight: 600 !important;
   }
+
+  /* Custom Summary / Notice Box */
+  .summary-box {
+    background-color: rgba(142, 68, 173, 0.07) !important; /* Very soft purple tint */
+    border-left: 6px solid #8e44ad !important;           /* Thick purple "Action" bar */
+    padding: 1.5em !important;
+    border-radius: 0 8px 8px 0;                          /* Rounded corners on the right */
+    margin-bottom: 2em;
+    font-style: italic;
+    color: #333;
+  }
+  
+  /* Make the "Short Version" label pop */
+  .summary-box strong {
+    color: #8e44ad;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-style: normal;
+  }
   
 }
 
-/* 5. Shrink the Site Title in the top navigation bar */
+/* Shrink the Site Title in the top navigation bar */
 .site-title {
   font-size: 1rem !important;
 }
