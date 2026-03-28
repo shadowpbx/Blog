@@ -1,31 +1,41 @@
 ---
-# This front matter is required for Jekyll to process Sass!
+# Front matter is required
 ---
 
 @import "minimal-mistakes";
 
-/* 1. Shrink the Global Font */
-body {
-  font-size: 15px !important; /* Standard "pro" reading size */
-}
+/* 1. Target the Main Content Wrapper (#main) */
+#main {
+  /* Shrink paragraphs, lists, and table text all at once */
+  p, li, td, th, blockquote {
+    font-size: 0.9rem !important; 
+    line-height: 1.5 !important;
+  }
 
-/* 2. Target the actual blog content specifically */
-.page__content {
-  p, li, dl, blockquote {
-    font-size: 1rem !important; 
-    line-height: 1.6;
+  /* 2. Target the Giant Post Title */
+  .page__title {
+    font-size: 1.6rem !important; 
+    margin-top: 0.5em !important;
+  }
+
+  /* 3. Target the Section Headers (h2, h3) */
+  h2 { 
+    font-size: 1.3rem !important; 
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.3em;
+  }
+  
+  h3 { 
+    font-size: 1.1rem !important; 
+  }
+
+  /* 4. Reset Code Blocks (so they don't get too tiny) */
+  pre, code, .highlight {
+    font-size: 0.85rem !important;
   }
 }
 
-/* 3. Shrink the massive Headers */
-.page__title {
-  font-size: 1.8rem !important;
-}
-
-h2 { font-size: 1.4rem !important; }
-h3 { font-size: 1.2rem !important; }
-
-/* 4. Tame the code blocks */
-code, kbd, pre, samp {
-  font-size: 0.85em !important;
+/* 5. Shrink the Site Title in the top navigation bar */
+.site-title {
+  font-size: 1rem !important;
 }
