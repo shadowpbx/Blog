@@ -1,5 +1,11 @@
 # Welcome to My Tech Blog
 
-Here are my latest articles and fixes:
+Here are my latest tutorials and fixes:
 
-* [Stopping the Raptor: Intel 13th Gen Linux Crash Fix](How_a_BIOS_Fix_Ended_My_Chrome_Crashes_and_System-Wide_Instability.md)
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a> - {{ post.date | date: "%B %d, %Y" }}
+    </li>
+  {% endfor %}
+</ul>
