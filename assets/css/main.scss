@@ -33,6 +33,17 @@
   pre, code, .highlight {
     font-size: 0.85rem !important;
   }
+
+/* The Universal Code Highlight */
+  code {
+    color: #8e44ad !important;           /* The main text color */
+    background-color: rgba(142, 68, 173, 0.1) !important; /* 10% opacity tint */
+    padding: 2px 4px !important;
+    border-radius: 3px;
+    font-family: "Courier New", Courier, monospace !important;
+    font-weight: 600 !important;
+  }
+  
 }
 
 /* 5. Shrink the Site Title in the top navigation bar */
