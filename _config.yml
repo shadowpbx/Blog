@@ -21,6 +21,18 @@ author:
       icon: "fab fa-fw fa-github"
       url: "https://github.com/shadowpbx"
 
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true # This is the "magic" line that turns on the sidebar
+      read_time: false
+      comments: false
+      share: true
+      related: false
+
 # Plugins
 plugins:
   - jekyll-feed
