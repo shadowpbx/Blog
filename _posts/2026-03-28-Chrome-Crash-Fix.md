@@ -1,3 +1,8 @@
+---
+layout: post
+title: "How a BIOS Fix Ended My Chrome Crashes and System-Wide Instability"
+---
+
 # How a BIOS Fix Ended My Chrome Crashes and System-Wide Instability (Intel 13th/14th Gen)
 
 ## ⚠️ The Problem: The "Unfixable" Browser Crash
