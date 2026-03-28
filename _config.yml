@@ -1,8 +1,8 @@
 # Site Settings
-title: My Tech & Cybersecurity Blog
-description: Hardware fixes, cybersecurity research, and IT troubleshooting.
+title: My Tech Blog
+description: Troubleshooting and IT fixes.
 
-# CRITICAL: This adds "/Blog" to all your internal links automatically
+# This is the "Magic Fix" for the 404 and the broken styling
 baseurl: "/Blog" 
 url: "https://shadowpbx.github.io"
 
@@ -14,3 +14,4 @@ timezone: America/New_York
 # Plugins
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
