@@ -44,24 +44,31 @@
     font-weight: 600 !important;
   }
 
-/* 5. Custom Professional Summary Callout */
+  /* 5. Custom Summary Box - Professional Rounded Style */
   .summary-box {
-    background-color: rgba(142, 68, 173, 0.15) !important; /* Visible, soft purple tint */
-    border: 2px solid rgba(142, 68, 173, 0.3) !important; /* Full subtle purple border */
-    border-left: 6px solid #8e44ad !important;            /* Primary purple "Action" bar accent */
+    /* Use a slightly deeper tint (12%) to ensure it's visible on all screens */
+    background-color: rgba(142, 68, 173, 0.12) !important; 
+    
+    /* The Full Rectangle Border */
+    border: 1px solid rgba(142, 68, 173, 0.25) !important;
+    
+    /* The Thick Professional Accent Bar on the left */
+    border-left: 6px solid #8e44ad !important;
+    
+    /* Rounded Corners */
+    border-radius: 8px !important;
+    
     padding: 1.5em !important;
-    border-radius: 8px !important;                          /* Rounded corners all around */
     margin-bottom: 2em;
-    font-style: italic;
     color: #333;
+    line-height: 1.6;
   }
   
-  /* Styling for the "Short Version" text */
+  /* Styling the "Short Version" header text inside the box */
   .summary-box strong {
     color: #8e44ad;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-style: normal;
+    font-size: 1.05rem;
+    /* text-transform: uppercase; <--- REMOVED */
   }
   
 }
