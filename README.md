@@ -1,4 +1,6 @@
-# My Tech & Cybersecurity Blog
-Welcome! This repository holds my blog.
+# 🛡️ Shadow's Tech & Cybersecurity Blog
+Building my home lab and documenting the journey.
 
-### 🔗 [Visit the Live Blog Here](https://shadowpbx.github.io/Blog/)
+### 🔗 [Visit the Live Site](https://shadowpbx.github.io/Blog/)
+
+### 📝 Latest Blog Posts
