@@ -11,6 +11,16 @@ remote_theme: "mmistakes/minimal-mistakes"
 future: true
 timezone: America/New_York
 
+author:
+  name   : "Tanvir Hussain"
+  avatar : "/assets/images/bio-photo.jpg" # Or a tech-themed avatar
+  bio    : "Cybersecurity Student | Home Lab Enthusiast"
+  location: "New York"
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/shadowpbx"
+
 # Plugins
 plugins:
   - jekyll-feed
