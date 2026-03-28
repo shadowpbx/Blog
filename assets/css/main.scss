@@ -80,3 +80,27 @@ hr {
   margin: 2em 0 !important;
   padding: 0;
 }
+
+/* 6. Shrink the Author Sidebar Text */
+.author__content {
+  /* Your Name */
+  .author__name {
+    font-size: 1.1rem !important; 
+    margin-top: 10px !important;
+    margin-bottom: 5px !important;
+  }
+
+  /* The Bio, Location, and Social Links */
+  .author__bio, 
+  .author__location,
+  .author__urls-wrapper {
+    font-size: 0.85rem !important; /* Smaller, crisp font */
+    line-height: 1.4 !important;
+    color: #666 !important; /* Slightly softer gray for a pro look */
+  }
+}
+
+/* Shrink the icons next to location/links */
+.author__urls-wrapper i {
+  font-size: 0.8rem !important;
+}
