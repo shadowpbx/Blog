@@ -4,7 +4,8 @@ title: "How a BIOS Fix Ended My Chrome Crashes and System-Wide Instability (Inte
 ---
 
 
-> **The Short Version:** If you are running a high-end Intel processor (like the **i7-13700K**) on Linux with a massive **128GB RAM** configuration, you have likely encountered application failures. This is not a driver issue; it is a hardware-level power management failure.
+**The Short Version:** If you are running a high-end Intel processor (like the **i7-13700K**) on Linux with a massive **128GB RAM** configuration, you have likely encountered application failures. This is not a driver issue; it is a hardware-level power management failure.
+{: .summary-box}
 
 ## 🛠️ The "Magic" Stability Blueprint
 
