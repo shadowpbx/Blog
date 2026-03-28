@@ -2,7 +2,7 @@
 title: My Tech Blog
 description: Troubleshooting and IT fixes.
 
-# This is the "Magic Fix" for the 404 and the broken styling
+# My Blog
 baseurl: "/Blog" 
 url: "https://shadowpbx.github.io"
 
