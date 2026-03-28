@@ -1,9 +1,7 @@
 ---
 layout: post
-title: "How a BIOS Fix Ended My Chrome Crashes and System-Wide Instability"
+title: "How a BIOS Fix Ended My Chrome Crashes and System-Wide Instability (Intel 13th/14th Gen)"
 ---
-
-# How a BIOS Fix Ended My Chrome Crashes and System-Wide Instability (Intel 13th/14th Gen)
 
 ## ⚠️ The Problem: The "Unfixable" Browser Crash
 If you are running a high-end Intel 13th or 14th Gen processor (like the **i7-13700K** or **i9-14900K**) on Linux, you have likely encountered a maddening cycle of application failures:
