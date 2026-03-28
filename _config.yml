@@ -7,7 +7,7 @@ baseurl: "/Blog"
 url: "https://shadowpbx.github.io"
 
 # Build Settings
-theme: minima
+remote_theme: "mmistakes/minimal-mistakes"
 future: true
 timezone: America/New_York
 
@@ -15,3 +15,4 @@ timezone: America/New_York
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-include-cache
