@@ -44,18 +44,19 @@
     font-weight: 600 !important;
   }
 
-  /* Custom Summary / Notice Box */
+/* 5. Custom Professional Summary Callout */
   .summary-box {
-    background-color: rgba(142, 68, 173, 0.07) !important; /* Very soft purple tint */
-    border-left: 6px solid #8e44ad !important;           /* Thick purple "Action" bar */
+    background-color: rgba(142, 68, 173, 0.15) !important; /* Visible, soft purple tint */
+    border: 2px solid rgba(142, 68, 173, 0.3) !important; /* Full subtle purple border */
+    border-left: 6px solid #8e44ad !important;            /* Primary purple "Action" bar accent */
     padding: 1.5em !important;
-    border-radius: 0 8px 8px 0;                          /* Rounded corners on the right */
+    border-radius: 8px !important;                          /* Rounded corners all around */
     margin-bottom: 2em;
     font-style: italic;
     color: #333;
   }
   
-  /* Make the "Short Version" label pop */
+  /* Styling for the "Short Version" text */
   .summary-box strong {
     color: #8e44ad;
     text-transform: uppercase;
