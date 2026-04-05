@@ -149,14 +149,13 @@ esac
 exit $? 
 ```
 
-### 🔍 Deep Analysis: Why the "Extra" Code Matters
+### 🔍 Why the "Extra" Code?
+1.  **`MAX_TRIES=15`:** Provides a robust buffer. If the hardware is slow due to power issues or SD card latency, the script won't give up immediately.
+2.  **`while [ ! -d ... ]`:** This is the most efficient way to boot. Instead of waiting for a flat 10 seconds, the script exits the loop the **exact second** the hardware is ready, speeding up your boot time.
+3.  **`> /dev/null 2>&1`:** This silences the `modprobe` output, keeping your boot console clean and professional.
+4.  **`mkdir -p /var/run/wpa_supplicant`:** In Buildroot, `/var/run` is usually a `tmpfs` (RAM disk). It is wiped on every power cycle. If your script doesn't recreate this folder, `wpa_supplicant` will crash because it has no place to put its communication socket.
 
-As identified during the debugging process, every line in this script serves a specific architectural purpose:
-
-*   **`MAX_TRIES=15`:** This provides a safety buffer. On some boots, the SD card may be slow or the power supply may cause a slight delay in chip initialization. Fifteen seconds is the "industry standard" for robust embedded discovery.
-*   **The `while` Loop:** This is the "Efficiency Engine." Instead of a hard-coded `sleep 10`, the script exits the loop the **exact second** the hardware reports for duty. This shaves precious seconds off your total boot time.
-*   **`modprobe brcmfmac > /dev/null 2>&1`:** This silences the driver output. In a production system, you want a clean console. If the driver is already loaded, `modprobe` stays quiet; if it's not, it loads it silently.
-*   **`mkdir -p /var/run/wpa_supplicant`:** This is a "Volatile Directory" fix. In Buildroot, `/var/run` is usually a `tmpfs` (RAM disk) to save wear and tear on the SD card. However, this means the folder is **deleted** every time the power is pulled. If your script doesn't recreate this folder, `wpa_supplicant` will fail to create its communication socket and the connection will fail silently.
+---
 ---
 
 ## 📂 The Firmware Naming Trap
@@ -185,146 +184,6 @@ chmod +x board/raspberrypi/overlay/etc/init.d/S40network
 ```
 
 ---
-
-## 🎯 Conclusion: The Senior Architect's View
-
-This is the finalized, professional-grade article for your GitHub repository. It incorporates your latest production script, analyzes the "Watchman" logic, and explains the specific debug findings from your build history.
-
-***
-
-# 📶 Solving Wi-Fi Auto-Connect Race Conditions & Configuration Traps in Buildroot for Raspberry Pi Zero 2 W
-
-🛠️ Building a custom, hyper-minimalist Linux OS from source using Buildroot is incredibly rewarding. It allows you to create lightning-fast, secure, and bloat-free systems perfect for embedded hardware or cybersecurity home labs. 
-
-However, when moving away from "heavy" OS environments like Ubuntu or Raspberry Pi OS (which use `systemd` and `NetworkManager`), you lose the background services that automatically handle hardware timing. You also lose a lot of default program features that you might take for granted.
-
----
-
-## 🩺 The Symptoms
-*   **Perfect Files:** Your `wpa_supplicant.conf` and `interfaces` files are perfectly configured.
-*   **No IP:** The Pi boots, but `ip addr show wlan0` shows no IP address.
-*   **Manual Works:** Running `ifup wlan0` manually *after* logging in works perfectly.
-*   **Kernel Errors:** Checking `dmesg` shows Broadcom firmware errors like: `Direct firmware load for ... failed with error -2`.
-
----
-
-## 🪤 Trap 1: The `ctrl_interface` Crash
-
-In a standard Linux OS (like Ubuntu), your `/etc/wpa_supplicant/wpa_supplicant.conf` usually includes `ctrl_interface=/var/run/wpa_supplicant`. 
-
-### ❌ The Problem
-Buildroot is designed to be hyper-minimal. By default, **Buildroot compiles `wpa_supplicant` without the `wpa_cli` (control interface) feature.** 
-
-Because the program lacks the code to understand that specific command, it reads the word `ctrl_interface`, fails to find the corresponding logic in its binary, and crashes before it even attempts to read your password.
-
-### ✅ The Solution: The Bare-Metal Config
-Unless you specifically enable `wpa_cli` in `make menuconfig`, you must strip your config file down to the absolute bare minimum:
-
-```text
-network={
-    ssid="YourWiFiName"
-    psk="YourPassword"
-    key_mgmt=WPA-PSK
-}
-```
-
----
-
-## 🏎️ Race Condition 1: The Kernel vs. The Filesystem
-
-### ❌ The Problem
-If the Broadcom Wi-Fi driver (`brcmfmac`) is compiled directly into the kernel (**Built-in `[*]`**), it wakes up instantly (at ~3.8s). It immediately looks inside `/lib/firmware/` for the firmware "blobs" it needs.
-
-**The catch?** 💾 The physical SD card and the root filesystem don't finish mounting until ~5.1s. The driver is asking for files from a folder that **does not exist yet**. The driver gives up, and the Wi-Fi chip remains dead.
-
-### ✅ The Solution: Switching to a Module `<M>`
-You must switch the driver to a **Loadable Kernel Module (`<M>`)** so that you can control **Who** starts the driver and **When**.
-
-| Driver Type | Who starts it? | When? | Can it see Firmware? |
-| :--- | :--- | :--- | :--- |
-| **Built-in `[*]`** | The Kernel | Early Boot (~3.8s) | **No** (Filesystem not ready) |
-| **Module `<M>`** | **Your Script** | Late Boot (~5.5s) | **Yes** (SD Card is mounted) |
-
----
-
-## ⏱️ Race Condition 2: The "Watchman" Solution
-
-Even after the filesystem is mounted, the physical Broadcom Wi-Fi chip requires a few seconds to initialize its internal firmware once the driver is loaded. A simple `sleep 2` is often too short or unnecessarily long. 
-
-### ✅ The Solution: The Production `S40network` Script
-We implement a "Watchman" loop. This script doesn't just wait; it actively monitors the `/sys` filesystem to see the exact moment the hardware becomes available.
-
-#### 📜 The Final Script
-Create this file in your Buildroot overlay: `board/raspberrypi/overlay/etc/init.d/S40network`
-
-```bash
-#!/bin/sh
-# S40network - Production-ready Wi-Fi initialization for RPi Zero 2 W
-# Architect: Senior Systems Engineer
-
-NAME="wlan0"
-MAX_TRIES=15
-COUNT=0
-
-start() {
-    printf "Starting Network: Checking for %s... " "$NAME"
-
-    # 1. Force Kernel Module Loading
-    # Ensures the driver starts AFTER the filesystem is ready.
-    modprobe brcmfmac > /dev/null 2>&1
-    
-    # 2. Wait for Hardware Wake-up (The "Watchman" Loop)
-    # Checks /sys/class/net/wlan0 every second.
-    while [ ! -d "/sys/class/net/$NAME" ] && [ $COUNT -lt $MAX_TRIES ]; do
-        sleep 1
-        COUNT=$((COUNT + 1))
-    done
-
-    if [ -d "/sys/class/net/$NAME" ]; then
-        # 3. Create Volatile Directory for wpa_supplicant
-        # Required because Buildroot clears /var/run (tmpfs) on every reboot.
-        mkdir -p /var/run/wpa_supplicant
-        
-        # 4. Trigger the network interface
-        /sbin/ifup -a
-        echo "OK (Hardware ready after ${COUNT}s)"
-    else
-        echo "FAIL (Hardware not detected)"
-        exit 1
-    fi
-}
-
-stop() {
-    printf "Stopping Network: %s... " "$NAME"
-    /sbin/ifdown -a
-    echo "OK"
-}
-
-case "$1" in
-  start) start ;;
-  stop) stop ;;
-  restart|reload) stop; sleep 1; start ;;
-  *) echo "Usage: $0 {start|stop|restart}"; exit 1 ;;
-esac
-
-exit $? 
-```
-
-### 🔍 Why the "Extra" Code?
-1.  **`MAX_TRIES=15`:** Provides a robust buffer. If the hardware is slow due to power issues or SD card latency, the script won't give up immediately.
-2.  **`while [ ! -d ... ]`:** This is the most efficient way to boot. Instead of waiting for a flat 10 seconds, the script exits the loop the **exact second** the hardware is ready, speeding up your boot time.
-3.  **`> /dev/null 2>&1`:** This silences the `modprobe` output, keeping your boot console clean and professional.
-4.  **`mkdir -p /var/run/wpa_supplicant`:** In Buildroot, `/var/run` is usually a `tmpfs` (RAM disk). It is wiped on every power cycle. If your script doesn't recreate this folder, `wpa_supplicant` will crash because it has no place to put its communication socket.
-
----
-
-## 🧹 Final Housekeeping
-If you edit these files on a Windows machine, you **must** remove the hidden carriage return characters (`\r`) before building:
-```bash
-# Run these on your Ubuntu Workstation
-sed -i 's/\r$//' board/raspberrypi/overlay/etc/init.d/S40network
-chmod +x board/raspberrypi/overlay/etc/init.d/S40network
-```
 
 ## 🎯 Conclusion
 In Buildroot, **you are the architect**. By shifting the Broadcom driver to a loadable module and implementing a "Watchman" loop, you transform an unpredictable race condition into a synchronized, production-ready pipeline. The result is a highly deterministic, hyper-fast, zero-touch headless boot. 🚀
