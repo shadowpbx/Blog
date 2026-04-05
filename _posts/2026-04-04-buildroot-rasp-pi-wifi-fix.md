@@ -1,3 +1,10 @@
+---
+layout: single
+title: "Solving Wi-Fi Auto-Connect Race Conditions & Configuration Traps in Buildroot for Raspberry Pi Zero 2 W"
+---
+
+
+
 # 📶 Solving Wi-Fi Auto-Connect Race Conditions & Configuration Traps in Buildroot for Raspberry Pi Zero 2 W
 
 ---
