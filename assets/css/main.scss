@@ -95,7 +95,7 @@ hr {
 .author__content {
   /* Your Name */
   .author__name {
-    font-size: 1.1rem !important; 
+    font-size: 1.0rem !important; 
     margin-top: 10px !important;
     margin-bottom: 5px !important;
   }
@@ -104,7 +104,7 @@ hr {
   .author__bio, 
   .author__location,
   .author__urls-wrapper {
-    font-size: 0.80rem !important; /* Smaller, crisp font */
+    font-size: 0.75rem !important; /* Smaller, crisp font */
     line-height: 1.4 !important;
     color: #666 !important; /* Slightly softer gray for a pro look */
   }
@@ -161,7 +161,7 @@ hr {
     .author__bio, 
     .author__location,
     .author__urls-wrapper {
-      font-size: 0.95rem !important;
+      font-size: 0.90rem !important;
     }
   }
 }
