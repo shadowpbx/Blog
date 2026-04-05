@@ -8,7 +8,7 @@
 #main {
   /* Shrink paragraphs, lists, and table text all at once */
   p, li, td, th, blockquote {
-    font-size: 1.0rem !important; 
+    font-size: 1.1rem !important; 
     line-height: 1.5 !important;
   }
 
@@ -104,7 +104,7 @@ hr {
   .author__bio, 
   .author__location,
   .author__urls-wrapper {
-    font-size: 0.85rem !important; /* Smaller, crisp font */
+    font-size: 0.80rem !important; /* Smaller, crisp font */
     line-height: 1.4 !important;
     color: #666 !important; /* Slightly softer gray for a pro look */
   }
@@ -112,7 +112,7 @@ hr {
 
 /* Shrink the icons next to location/links */
 .author__urls-wrapper i {
-  font-size: 0.8rem !important;
+  font-size: 0.75rem !important;
 }
 
 /* Mobile Specific Typography Overrides */
