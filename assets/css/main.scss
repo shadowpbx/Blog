@@ -104,3 +104,54 @@ hr {
 .author__urls-wrapper i {
   font-size: 0.8rem !important;
 }
+
+
+/* Mobile Specific Typography Overrides */
+/* This block only activates on screens 768px wide or smaller */
+@media screen and (max-width: 768px) {
+  
+  #main {
+    /* Increasing body text for readability on small screens */
+    p, li, td, th, blockquote {
+      font-size: 1.2rem !important; 
+      line-height: 1.6 !important;
+    }
+
+    /* Scaling the post title to stand out on mobile */
+    .page__title {
+      font-size: 1.8rem !important;
+    }
+
+    /* Adjusting section headers for better mobile flow */
+    h2 { 
+      font-size: 1.5rem !important; 
+    }
+    
+    h3 { 
+      font-size: 1.3rem !important; 
+    }
+
+    /* Ensuring the summary box text is clear and legible */
+    .summary-box {
+      font-size: 1.1rem !important;
+      padding: 1.2em !important;
+    }
+  }
+
+  /* Slightly larger site title for mobile navigation */
+  .site-title {
+    font-size: 1.1rem !important;
+  }
+
+  /* Optimizing sidebar text for mobile layouts */
+  .author__content {
+    .author__name {
+      font-size: 1.2rem !important;
+    }
+    
+    .author__bio, 
+    .author__location,
+    .author__urls-wrapper {
+      font-size: 0.95rem !important;
+    }
+  }
