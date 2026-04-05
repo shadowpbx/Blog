@@ -34,14 +34,24 @@
     font-size: 0.85rem !important;
   }
 
-/* The Universal Code Highlight */
+  /* The Universal Code Highlight (Inline terms like systemd, udev) */
   code {
-    color: #8e44ad !important;           /* The main text color */
-    background-color: rgba(142, 68, 173, 0.1) !important; /* 10% opacity tint */
-    padding: 2px 4px !important;
-    border-radius: 3px;
+    color: #8e44ad !important;           /* Keep your purple text color */
+    background-color: rgba(135, 135, 135, 0.15) !important; /* Neutral gray tint that pops on ANY background */
+    border: 1px solid rgba(135, 135, 135, 0.25) !important; /* Professional subtle border */
+    padding: 0.2em 0.4em !important;     /* Better breathing room so background doesn't touch text */
+    border-radius: 6px !important;       /* Modern GitHub-style rounded corners */
     font-family: "Courier New", Courier, monospace !important;
     font-weight: 600 !important;
+  }
+
+  /* Protect large multi-line code blocks (<pre>) from inheriting the inline background and border */
+  pre code {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    color: inherit !important;
+    font-weight: inherit !important;
   }
 
   /* Custom Professional Summary Callout */
