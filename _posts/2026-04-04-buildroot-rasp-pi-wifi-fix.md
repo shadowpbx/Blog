@@ -156,7 +156,6 @@ exit $?
 4.  **`mkdir -p /var/run/wpa_supplicant`:** In Buildroot, `/var/run` is usually a `tmpfs` (RAM disk). It is wiped on every power cycle. If your script doesn't recreate this folder, `wpa_supplicant` will crash because it has no place to put its communication socket.
 
 ---
----
 
 ## 📂 The Firmware Naming Trap
 
