@@ -1,6 +1,6 @@
 # Site Settings
 title: The Blog
-description: Analysis of system-level stability and hardware-level security remediations.
+description: The Blog.
 
 # My Blog
 baseurl: "/Blog" 
