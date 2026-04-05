@@ -4,11 +4,6 @@ title: "Solving Wi-Fi Auto-Connect Race Conditions & Configuration Traps in Buil
 ---
 
 
-
-# Solving Wi-Fi Auto-Connect Race Conditions & Configuration Traps in Buildroot for Raspberry Pi Zero 2 W
-
----
-
 ## 🏛️ Introduction
 
 In a standard OS, massive background daemons like `systemd`, `udev`, and `NetworkManager` handle the complex timing required to wake up hardware. In Buildroot, these services do not exist unless you explicitly build them. This leads to a common, frustrating scenario: **Your Raspberry Pi Zero 2 W connects to Wi-Fi perfectly when you type commands manually, but refuses to connect automatically on boot.**
