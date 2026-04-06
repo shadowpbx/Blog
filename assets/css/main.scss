@@ -6,19 +6,16 @@
 
 /* 1. Target the Main Content Wrapper (#main) */
 #main {
-  /* Shrink paragraphs, lists, and table text all at once */
   p, li, td, th, blockquote {
     font-size: 1.0rem !important; 
     line-height: 1.5 !important;
   }
 
-  /* 2. Target the Giant Post Title */
   .page__title {
     font-size: 1.6rem !important; 
     margin-top: 0.5em !important;
   }
 
-  /* 3. Target the Section Headers (h2, h3) */
   h2 { 
     font-size: 1.4rem !important; 
     border-bottom: 1px solid #eee;
@@ -29,129 +26,74 @@
     font-size: 1.2rem !important; 
   }
 
-  /* 4. Reset Code Blocks (so they don't get too tiny) */
   pre, code, .highlight {
     font-size: 0.85rem !important;
   }
 
-/* The Universal Code Highlight */
   code {
-    color: #8e44ad !important;           /* The main text color */
-    background-color: rgba(142, 68, 173, 0.1) !important; /* 10% opacity tint */
+    color: #8e44ad !important;
+    background-color: rgba(142, 68, 173, 0.1) !important;
     padding: 2px 4px !important;
     border-radius: 3px;
     font-family: "Courier New", Courier, monospace !important;
     font-weight: 600 !important;
   }
 
-  /* Custom Professional Summary Callout */
   .summary-box {
-    background-color: rgba(142, 68, 173, 0.15) !important; /* Visible, soft purple tint */
-    border: 2px solid rgba(142, 68, 173, 0.3) !important; /* Full subtle purple border */
-    border-left: 6px solid #8e44ad !important;            /* Primary purple "Action" bar accent */
+    background-color: rgba(142, 68, 173, 0.15) !important;
+    border: 2px solid rgba(142, 68, 173, 0.3) !important;
+    border-left: 6px solid #8e44ad !important;
     padding: 1.5em !important;
-    border-radius: 8px !important;                          /* Rounded corners all around */
+    border-radius: 8px !important;
     margin-bottom: 2em;
     font-style: italic;
     color: #333;
   }
-  
-  /* Styling for the "Short Version" text */
-  .summary-box strong {
-    color: #8e44ad;
-    letter-spacing: 1px;
-    font-style: normal;
-  }
-
-  
 }
 
-/* Shrink the Site Title in the top navigation bar */
 .site-title {
   font-size: 1rem !important;
 }
 
-/* Force the horizontal line to be visible */
 hr {
   display: block;
   height: 2px !important;
   border: 0;
-  border-top: 2px solid #333 !important; /* This makes it a dark gray/black */
+  border-top: 2px solid #333 !important;
   margin: 2em 0 !important;
-  padding: 0;
 }
 
-/* 6. Shrink the Author Sidebar Text */
+/* Professional Sidebar Enhancements */
 .author__content {
-  /* Your Name */
   .author__name {
     font-size: 1.1rem !important; 
-    margin-top: 10px !important;
-    margin-bottom: 5px !important;
+    font-family: "JetBrains Mono", monospace !important;
   }
 
-  /* The Bio, Location, and Social Links */
-  .author__bio, 
-  .author__location,
-  .author__urls-wrapper {
-    font-size: 0.85rem !important; /* Smaller, crisp font */
-    line-height: 1.4 !important;
-    color: #666 !important; /* Slightly softer gray for a pro look */
+  .author__bio {
+    font-size: 0.85rem !important;
+    max-height: none !important;
+    overflow: visible !important;
+    font-family: "JetBrains Mono", monospace !important;
   }
 }
 
-/* Shrink the icons next to location/links */
-.author__urls-wrapper i {
-  font-size: 0.8rem !important;
+@media screen and (min-width: 1024px) {
+  .sidebar {
+    position: sticky !important;
+    top: 2rem !important;
+  }
 }
 
-/* Mobile Specific Typography Overrides */
-/* This block only activates on screens 768px wide or smaller */
 @media screen and (max-width: 768px) {
-  
+  .sidebar {
+    display: none !important;
+  }
+
   #main {
-    /* Increasing body text for readability on small screens */
-    p, li, td, th, blockquote {
-      font-size: 1.2rem !important; 
-      line-height: 1.6 !important;
-    }
-
-    /* Scaling the post title to stand out on mobile */
-    .page__title {
-      font-size: 1.8rem !important;
-    }
-
-    /* Adjusting section headers for better mobile flow */
-    h2 { 
-      font-size: 1.5rem !important; 
-    }
-    
-    h3 { 
-      font-size: 1.3rem !important; 
-    }
-
-    /* Ensuring the summary box text is clear and legible */
-    .summary-box {
-      font-size: 1.1rem !important;
-      padding: 1.2em !important;
-    }
-  }
-
-  /* Slightly larger site title for mobile navigation */
-  .site-title {
-    font-size: 1.1rem !important;
-  }
-
-  /* Optimizing sidebar text for mobile layouts */
-  .author__content {
-    .author__name {
-      font-size: 1.2rem !important;
-    }
-    
-    .author__bio, 
-    .author__location,
-    .author__urls-wrapper {
-      font-size: 0.95rem !important;
-    }
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 1rem !important;
+    overflow-x: hidden !important;
   }
 }
