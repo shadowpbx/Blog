@@ -7,6 +7,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Professional Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    
     <style>
         :root {
             --bg-page: #fcfcfd;
@@ -77,22 +81,36 @@
             font-size: 1.5rem;
         }
 
-        main pre {
-            background: #f1f5f9;
-            padding: 1.5rem;
-            border-radius: 8px;
-            overflow-x: auto;
-            font-family: var(--font-mono);
-            font-size: 0.95rem;
-            border: 1px solid var(--border);
-        }
-
-        main code {
+        /* Technical Code Styling */
+        
+        /* 1. Inline Code (e.g., .bin, .txt, commands) */
+        :not(pre) > code {
             font-family: var(--font-mono);
             background: #f1f5f9;
+            color: var(--accent);
             padding: 2px 6px;
             border-radius: 4px;
             font-size: 0.9em;
+            font-weight: 600;
+            border: 1px solid var(--border);
+            text-decoration: none !important;
+        }
+
+        /* 2. Code Blocks (e.g., configurations) */
+        pre[class*="language-"] {
+            background: #1e293b !important; /* Deep Slate Background */
+            padding: 1.5rem !important;
+            border-radius: 12px !important;
+            margin: 2rem 0 !important;
+            border: 1px solid #334155 !important;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        code[class*="language-"] {
+            font-family: var(--font-mono) !important;
+            font-size: 0.95rem !important;
+            text-shadow: none !important;
+            text-decoration: none !important;
         }
 
         footer {
@@ -124,6 +142,10 @@
             &copy; 2026 // TANVIR HUSSAIN // SYSTEMS ARCHITECT
         </footer>
     </div>
+
+    <!-- Prism.js Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
 </body>
 </html>
