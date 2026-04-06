@@ -21,15 +21,30 @@
         .post-date { font-family: var(--font-mono); font-size: 0.9rem; color: var(--text-secondary); margin-top: 1rem; }
         main { font-size: 1.15rem; color: var(--text-secondary); }
         main h2 { font-family: var(--font-mono); color: var(--text-primary); margin-top: 3rem; font-size: 1.5rem; }
-        :not(pre) > code { font-family: var(--font-mono); background: #f1f5f9; color: var(--accent); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-weight: 600; border: 1px solid var(--border); text-decoration: none !important; }
+        
+        /* TECHNICAL INLINE CODE (Professional Indigo-Purple) */
+        :not(pre) > code {
+            font-family: var(--font-mono) !important;
+            background-color: #f5f3ff !important; /* Very Light Purple Background */
+            color: #4338ca !important; /* Deep Professional Indigo-Purple Text */
+            padding: 0.2rem 0.4rem !important;
+            border-radius: 6px !important;
+            font-size: 0.85em !important;
+            font-weight: 700 !important;
+            border: 1px solid #e0e7ff !important;
+            white-space: nowrap !important;
+            text-decoration: none !important;
+        }
+
+        /* CODE BLOCKS */
         pre[class*="language-"] { background: #1e293b !important; padding: 1.5rem !important; border-radius: 12px !important; margin: 2rem 0 !important; border: 1px solid #334155 !important; }
         code[class*="language-"] { font-family: var(--font-mono) !important; font-size: 0.95rem !important; text-shadow: none !important; text-decoration: none !important; }
         
-        /* HIGH-CONTRAST TABLES */
+        /* TABLES */
         main table { width: 100%; border-collapse: collapse; margin: 4rem 0; font-size: 1.05rem; }
         main th { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--text-primary); padding: 1rem; border-bottom: 2px solid var(--text-primary); text-align: left; }
         main td { padding: 1.25rem 1rem; border-bottom: 1px solid #cbd5e1; color: var(--text-secondary); }
-        main tr:nth-child(even) td { background-color: #f1f5f9 !important; } /* FORCE VISIBLE STRIPE */
+        main tr:nth-child(even) td { background-color: #f1f5f9; }
         main tr:last-child td { border-bottom: none; }
         main td:first-child { font-weight: 600; color: var(--text-primary); }
         main td code { font-size: 0.85em !important; background: #e2e8f0 !important; border: none !important; }
