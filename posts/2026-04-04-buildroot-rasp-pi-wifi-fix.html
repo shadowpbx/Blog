@@ -7,135 +7,41 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!-- Professional Syntax Highlighting -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
-    
     <style>
         :root {
-            --bg-page: #fcfcfd;
-            --accent: #8e44ad;
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-            --border: #e2e8f0;
-            --font-main: 'Inter', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
+            --bg-page: #fcfcfd; --accent: #8e44ad; --text-primary: #0f172a; --text-secondary: #475569; --border: #e2e8f0;
+            --font-main: 'Inter', sans-serif; --font-mono: 'JetBrains Mono', monospace;
         }
-
-        body {
-            background-color: var(--bg-page);
-            color: var(--text-primary);
-            font-family: var(--font-main);
-            margin: 0;
-            padding: 0;
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .container {
-            max-width: 750px;
-            margin: 0 auto;
-            padding: 4rem 1.5rem;
-        }
-
-        header {
-            margin-bottom: 4rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 2rem;
-        }
-
-        .back-link {
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            text-decoration: none;
-            color: var(--accent);
-            font-weight: 700;
-            display: inline-block;
-            margin-bottom: 2rem;
-        }
-
-        h1 {
-            font-family: var(--font-mono);
-            font-size: 2.5rem;
-            margin: 0;
-            font-weight: 700;
-            letter-spacing: -1px;
-        }
-
-        .post-date {
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-top: 1rem;
-        }
-
-        main {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-        }
-
-        main h2 {
-            font-family: var(--font-mono);
-            color: var(--text-primary);
-            margin-top: 3rem;
-            font-size: 1.5rem;
-        }
-
-        /* Technical Code Styling */
+        body { background-color: var(--bg-page); color: var(--text-primary); font-family: var(--font-main); margin: 0; padding: 0; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 750px; margin: 0 auto; padding: 4rem 1.5rem; }
+        header { margin-bottom: 4rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
+        .back-link { font-family: var(--font-mono); font-size: 0.85rem; text-decoration: none; color: var(--accent); font-weight: 700; display: inline-block; margin-bottom: 2rem; }
+        h1 { font-family: var(--font-mono); font-size: 2.5rem; margin: 0; font-weight: 700; letter-spacing: -1px; }
+        .post-date { font-family: var(--font-mono); font-size: 0.9rem; color: var(--text-secondary); margin-top: 1rem; }
+        main { font-size: 1.15rem; color: var(--text-secondary); }
+        main h2 { font-family: var(--font-mono); color: var(--text-primary); margin-top: 3rem; font-size: 1.5rem; }
+        :not(pre) > code { font-family: var(--font-mono); background: #f1f5f9; color: var(--accent); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-weight: 600; border: 1px solid var(--border); text-decoration: none !important; }
+        pre[class*="language-"] { background: #1e293b !important; padding: 1.5rem !important; border-radius: 12px !important; margin: 2rem 0 !important; border: 1px solid #334155 !important; }
+        code[class*="language-"] { font-family: var(--font-mono) !important; font-size: 0.95rem !important; text-shadow: none !important; text-decoration: none !important; }
         
-        /* 1. Inline Code (e.g., .bin, .txt, commands) */
-        :not(pre) > code {
-            font-family: var(--font-mono);
-            background: #f1f5f9;
-            color: var(--accent);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.9em;
-            font-weight: 600;
-            border: 1px solid var(--border);
-            text-decoration: none !important;
-        }
+        /* HIGH-CONTRAST TABLES */
+        main table { width: 100%; border-collapse: collapse; margin: 4rem 0; font-size: 1.05rem; }
+        main th { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--text-primary); padding: 1rem; border-bottom: 2px solid var(--text-primary); text-align: left; }
+        main td { padding: 1.25rem 1rem; border-bottom: 1px solid #cbd5e1; color: var(--text-secondary); }
+        main tr:nth-child(even) td { background-color: #f1f5f9 !important; } /* FORCE VISIBLE STRIPE */
+        main tr:last-child td { border-bottom: none; }
+        main td:first-child { font-weight: 600; color: var(--text-primary); }
+        main td code { font-size: 0.85em !important; background: #e2e8f0 !important; border: none !important; }
 
-        /* 2. Code Blocks (e.g., configurations) */
-        pre[class*="language-"] {
-            background: #1e293b !important; /* Deep Slate Background */
-            padding: 1.5rem !important;
-            border-radius: 12px !important;
-            margin: 2rem 0 !important;
-            border: 1px solid #334155 !important;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-
-        code[class*="language-"] {
-            font-family: var(--font-mono) !important;
-            font-size: 0.95rem !important;
-            text-shadow: none !important;
-            text-decoration: none !important;
-        }
-
-        footer {
-            margin-top: 6rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: #94a3b8;
-        }
+        footer { margin-top: 6rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; font-family: var(--font-mono); font-size: 0.8rem; color: #94a3b8; }
     </style>
 </head>
 <body>
-
     <div class="container">
         <a href="https://shadowpbx.github.io/Blog/" class="back-link">[ &larr; BACK TO BLOG ]</a>
-        
-        <header>
-            <h1>Solving Wi-Fi Auto-Connect Race Conditions & Configuration Traps in Buildroot for Raspberry Pi Zero 2 W</h1>
-            <p class="post-date">PUBLISHED // 2026.04.04</p>
-        </header>
-
-        <main>
-            <p>In a standard OS, massive background daemons like <code>systemd</code>, <code>udev</code>, and <code>NetworkManager</code> handle the complex timing required to wake up hardware. In Buildroot, these services do not exist unless you explicitly build them. This leads to a common, frustrating scenario: <strong>Your Raspberry Pi Zero 2 W connects to Wi-Fi perfectly when you type commands manually, but refuses to connect automatically on boot.</strong></p>
+        <header><h1>Solving Wi-Fi Auto-Connect Race Conditions & Configuration Traps in Buildroot for Raspberry Pi Zero 2 W</h1><p class="post-date">PUBLISHED // 2026.04.04</p></header>
+        <main><p>In a standard OS, massive background daemons like <code>systemd</code>, <code>udev</code>, and <code>NetworkManager</code> handle the complex timing required to wake up hardware. In Buildroot, these services do not exist unless you explicitly build them. This leads to a common, frustrating scenario: <strong>Your Raspberry Pi Zero 2 W connects to Wi-Fi perfectly when you type commands manually, but refuses to connect automatically on boot.</strong></p>
 <p>If you are experiencing this, you haven't necessarily misconfigured your credentials. Instead, you have encountered the "Gears of the Machine"—the internal timing conflicts known as <strong>Race Conditions</strong>. This article serves as a comprehensive guide to diagnosing and defeating these architectural hurdles to achieve a 100% reliable, zero-touch headless boot.</p>
 <hr />
 <h2>🩺 The Symptoms of a Failed Automation</h2>
@@ -297,17 +203,10 @@ chmod +x board/raspberrypi/overlay/etc/init.d/S40network
 </code></pre>
 <hr />
 <h2>🎯 Conclusion</h2>
-<p>In Buildroot, <strong>you are the architect</strong>. By shifting the Broadcom driver to a loadable module and implementing a "Watchman" loop, you transform an unpredictable race condition into a synchronized, production-ready pipeline. The result is a highly deterministic, hyper-fast, zero-touch headless boot. 🚀</p>
-        </main>
-
-        <footer>
-            &copy; 2026 // TANVIR HUSSAIN // SYSTEMS ARCHITECT
-        </footer>
+<p>In Buildroot, <strong>you are the architect</strong>. By shifting the Broadcom driver to a loadable module and implementing a "Watchman" loop, you transform an unpredictable race condition into a synchronized, production-ready pipeline. The result is a highly deterministic, hyper-fast, zero-touch headless boot. 🚀</p></main>
+        <footer>&copy; 2026 // TANVIR HUSSAIN // SYSTEMS ARCHITECT</footer>
     </div>
-
-    <!-- Prism.js Script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
-
 </body>
 </html>
